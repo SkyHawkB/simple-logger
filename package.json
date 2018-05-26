@@ -1,0 +1,21 @@
+{
+  "name": "simple-logger",
+  "version": "1.0.0",
+  "description": "My version of a simple logger for different logging levels.",
+  "main": "index.js",
+  "dependencies": {
+    "colors": "^1.3.0",
+    "moment": "^2.22.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "logger",
+    "logging",
+    "console"
+  ],
+  "author": "",
+  "license": "MIT"
+}
