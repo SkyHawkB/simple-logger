@@ -14,6 +14,9 @@ module.exports = {
   info: (message) => {
     console.log(timestamp() + `${' INFO '.bold.white} ${message.white}`);
   },
+  success: (message) => {
+    console.log(timestamp() + `${' INFO '.bold.green} ${message.white}`);
+  }
   debug: (message) => {
     console.log(timestamp() + `${'DEBUG '.bold.white} ${message.white}`);
   }
