@@ -1,5 +1,5 @@
 {
-  "name": "simple-logger",
+  "name": "sky-logger",
   "version": "1.0.0",
   "description": "My version of a simple logger for different logging levels.",
   "main": "index.js",
