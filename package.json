@@ -1,6 +1,6 @@
 {
   "name": "sky-logger",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "My version of a simple logger for different logging levels.",
   "main": "index.js",
   "dependencies": {
