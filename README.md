@@ -18,10 +18,12 @@ yarn add sky-logger
 ```js
 const logger = require('sky-logger');
 
-logger.debug('sky-logger is great!');
-logger.info('sky-logger is great!');
-logger.warn('sky-logger is great!');
-logger.error('sky-logger is great!');
+logger.enableDebug()
+  .debug('sky-logger is great!')
+  .info('sky-logger is great!')
+  .success('sky-logger is great!')
+  .warn('sky-logger is great!')
+  .error('sky-logger is great!');
 ```
 will output
 ![](example.png?raw=true)
