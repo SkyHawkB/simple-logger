@@ -3,61 +3,52 @@ const moment = require('moment');
 const timestamp = () => {
   return colors.white(`[${moment().format('DD/MM/YYYY hh:mm:ss')}] `);
 };
+const log = (message) => {
+  process.stdout.write(message);
+};
 
 class Logger {
-  constructor() {
-    this.prefix = '';
-    this.doDebug = false;
-  }
-
-  setPrefix(prefix) {
+  constructor(prefix = '', debug = false) {
     this.prefix = prefix;
+    this.doDebug = debug;
+  }
+
+  static raw(type, string) {
+    log(`${timestamp()}${this.prefix === undefined ? '' : this.prefix} ${type} ${string} \n`);
+  }
+
+  static error(data, ...args) {
+    const message = require('util').format(data, ...args);
+    this.raw('ERROR '.bold.red, message.white);
 
     return this;
   }
-
-  enableDebug() {
-    this.doDebug = true;
-
-    return this;
-  }
-  disableDebug() {
-    this.doDebug = false;
+  static warn(data, ...args) {
+    const message = require('util').format(data, ...args);
+    this.raw(' WARN '.bold.yellow, message.white);
 
     return this;
   }
-  toggleDebug() {
-    this.doDebug = !this.doDebug;
+  static info(data, ...args) {
+    const message = require('util').format(data, ...args);
+    this.raw(' INFO '.bold.white, message.white);
 
     return this;
   }
-
-  error(message) {
-    console.log(timestamp() + `${this.prefix} ${'ERROR '.bold.red} ${message.white}`);
-
-    return this;
-  }
-  warn(message) {
-    console.log(timestamp() + `${this.prefix} ${' WARN '.bold.yellow} ${message.white}`);
+  static success(data, ...args) {
+    const message = require('util').format(data, ...args);
+    this.raw(' INFO '.bold.green, message.white);
 
     return this;
   }
-  info(message) {
-    console.log(timestamp() + `${this.prefix} ${' INFO '.bold.white} ${message.white}`);
-
-    return this;
-  }
-  success(message) {
-    console.log(timestamp() + `${this.prefix} ${' INFO '.bold.green} ${message.white}`);
-
-    return this;
-  }
-  debug(message) {
-    if(this.doDebug) console.log(timestamp() + `${this.prefix} ${'DEBUG '.bold.white} ${message.white}`);
+  static debug(data, ...args) {
+    if(this.doDebug || false) {
+      const message = require('util').format(data, ...args);
+      this.raw('DEBUG '.bold.white, message.white);
+    }
 
     return this;
   }
 }
 
-module.exports = new Logger();
-module.exports.Logger = Logger;
+module.exports = Logger;

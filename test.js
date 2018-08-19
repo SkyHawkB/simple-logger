@@ -1,6 +1,6 @@
 const logger = require('./index.js');
 
-logger.enableDebug()
+logger
   .debug('sky-logger is great!')
   .info('sky-logger is great!')
   .success('sky-logger is great!')
